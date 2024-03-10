@@ -1,7 +1,7 @@
 # sql_pour_la_data
 Ressources pour le cours SQL pour la data
 
-Ce répertoire GitHub contient les ressources utiles pour le cours [Udemy SQL pour la data](link).
+Ce répertoire GitHub contient les ressources utiles pour le cours [Udemy SQL pour la data](https://www.udeny.com).
 
 # Liste des ressources
 
