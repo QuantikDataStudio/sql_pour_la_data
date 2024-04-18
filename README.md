@@ -11,3 +11,5 @@ Le fichier SQLite [quantik_academy_sql_pour_la_data.db](quantik_academy_sql_pour
 
 # Inscrivez-vous à notre cours
 Inscrivez-vous à notre cours sur Udemy en suivant ce lien: https://www.udemy.com/course/sql-pour-la-data/
+
+![image du cours](image_cours.jpg)
