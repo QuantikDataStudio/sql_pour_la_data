@@ -1,0 +1,106 @@
+-- Création des tables
+CREATE TABLE `formation-ada.import_ada.DIM_MANUFACTURER` (
+  IDManufacturer INT64 NOT NULL,
+  Manufacturer_Name STRING
+);
+
+CREATE TABLE `formation-ada.import_ada.DIM_MODEL` (
+  IDModel INT64 NOT NULL,
+  Model_Name STRING,
+  Unit_price NUMERIC,
+  IDManufacturer INT64
+);
+
+CREATE TABLE `formation-ada.import_ada.DIM_CUSTOMER` (
+  IDCustomer INT64 NOT NULL,
+  Customer_Name STRING,
+  Email STRING,
+  Phone INT64
+);
+
+CREATE TABLE `formation-ada.import_ada.DIM_LOCATION` (
+  IDLocation INT64 NOT NULL,
+  ZipCode INT64,
+  Country STRING,
+  State STRING,
+  City STRING
+);
+
+CREATE TABLE `formation-ada.import_ada.DIM_DATE` (
+  DATE DATE,
+  YEAR INT64,
+  QUARTER INT64,
+  MONTH INT64
+);
+
+CREATE TABLE `formation-ada.import_ada.FACT_TRANSACTIONS` (
+  IDModel INT64,
+  IDCustomer INT64,
+  IDLocation INT64,
+  TransactionDate DATE,
+  TotalPrice NUMERIC,
+  Quantity INT64
+);
+
+-- Insertion de données dans DIM_MANUFACTURER
+INSERT INTO `formation-ada.import_ada.DIM_MANUFACTURER` (IDManufacturer, Manufacturer_Name)
+VALUES
+    (1, 'Tesla'),
+    (2, 'Nissan'),
+    (3, 'Toyota'),
+    (4, 'Ford'),
+    (5, 'Chevrolet');
+
+-- Insertion de données dans DIM_MODEL
+INSERT INTO `formation-ada.import_ada.DIM_MODEL` (IDModel, Model_Name, Unit_price, IDManufacturer)
+VALUES
+    (1, 'Model S', 79999.99, 1),
+    (2, 'Model 3', 39999.99, 1),
+    (3, 'Leaf', 29999.99, 2),
+    (4, 'Corolla', 19999.99, 3),
+    (5, 'F-150', 29999.99, 4),
+    (6, 'Silverado', 27999.99, 5);
+
+-- Insertion de données dans DIM_CUSTOMER
+INSERT INTO `formation-ada.import_ada.DIM_CUSTOMER` (IDCustomer, Customer_Name, Email, Phone)
+VALUES
+    (1, 'Alice Smith', 'alice@example.com', 1234567890),
+    (2, 'Bob Johnson', 'bob@example.com', 2345678901),
+    (3, 'Charlie Brown', 'charlie@example.com', 3456789012),
+    (4, 'Dana White', 'dana@example.com', 4567890123),
+    (5, 'Eve Davis', 'eve@example.com', 5678901234);
+
+-- Insertion de données dans DIM_LOCATION
+INSERT INTO `formation-ada.import_ada.DIM_LOCATION` (IDLocation, ZipCode, Country, State, City)
+VALUES
+    (1, 94016, 'USA', 'CA', 'San Francisco'),
+    (2, 10001, 'USA', 'NY', 'New York'),
+    (3, 60601, 'USA', 'IL', 'Chicago'),
+    (4, 73301, 'USA', 'TX', 'Austin'),
+    (5, 98101, 'USA', 'WA', 'Seattle');
+
+-- Insertion de données dans DIM_DATE
+INSERT INTO `formation-ada.import_ada.DIM_DATE` (DATE, YEAR, QUARTER, MONTH)
+VALUES
+    ('2024-01-01', 2024, 1, 1),
+    ('2024-02-01', 2024, 1, 2),
+    ('2024-03-01', 2024, 1, 3),
+    ('2024-04-01', 2024, 2, 4),
+    ('2024-05-01', 2024, 2, 5),
+    ('2024-06-01', 2024, 2, 6),
+    ('2024-07-01', 2024, 3, 7),
+    ('2024-08-01', 2024, 3, 8),
+    ('2024-09-01', 2024, 3, 9),
+    ('2024-10-01', 2024, 4, 10),
+    ('2024-11-01', 2024, 4, 11),
+    ('2024-12-01', 2024, 4, 12);
+
+-- Insertion de données dans FACT_TRANSACTIONS
+INSERT INTO `formation-ada.import_ada.FACT_TRANSACTIONS` (IDModel, IDCustomer, IDLocation, TransactionDate, TotalPrice, Quantity)
+VALUES
+    (1, 1, 1, '2024-01-01', 79999.99, 1),
+    (2, 2, 2, '2024-02-01', 39999.99, 2),
+    (3, 3, 3, '2024-03-01', 29999.99, 1),
+    (4, 4, 4, '2024-04-01', 19999.99, 3),
+    (5, 5, 5, '2024-05-01', 29999.99, 1),
+    (6, 1, 1, '2024-06-01', 27999.99, 2);
